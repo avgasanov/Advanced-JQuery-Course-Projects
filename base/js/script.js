@@ -78,14 +78,69 @@ $(function() {
   // var specialLink = $("#special-link");
   // console.log(specialLink.attr("href")); // you can do for any attr you like
   // specialLink.attr("href", "http://url.com"); // specify if not specified
-  var checkbox = $("input:checkbox");
-  console.log(checkbox.prop("checked")); // attribute will always return "checked", while prop will return 
-  // true or false
-  var textInput = $("input:text");
-  console.log(textInput.val());
+  // var checkbox = $("input:checkbox");
+  // console.log(checkbox.prop("checked")); // attribute will always return "checked", while prop will return 
+  // // true or false
+  // var textInput = $("input:text");
+  // console.log(textInput.val());
 
-  var rangeInput = $("input[type='range']");
-  console.log(rangeInput.val());
-  rangeInput.val(5); // val works only with first element;
+  // var rangeInput = $("input[type='range']");
+  // console.log(rangeInput.val());
+  // rangeInput.val(5); // val works only with first element;
+
+  // Section 5. Manipulating DOM. Changing element data and css ---
+  // --- CHANGING CSS PROPERTIES OF ELEMENTS ---
+    // $(".gallery").css("display", "none") // same as hide();
+    // var redBox = $(".red-box");
+    // console.log(redBox.css("with"));
+    // console.log(redBox.width());
+    // redBox.css("background-color", "#AA7700 !important");
+    // var properties = $("p").css(["font-size", "line-height", "color"]);
+    // console.log(properties);
+    // console.log(properties["font-size"]);
+
+    // redBox.css("user-select", "none");
+    // redBox.css("user-select", function() {
+    //   return "none";
+    // })
+
+    // --- ADDING OR REMOVING CSS CLASSES
+    // $("a").addClass("fancy-link"); // class="..."
+    // $("a").addClass("class emphasize"); // class="..."
+    // $("li li").addClass(function(index) {
+    //   $this.addClass("item-" + index);
+    // });
+    // $("div").addClass(function(index, currentClass) {
+    //   if(currentClass === "dummy") {
+    //     return "red-box";
+    //   }
+    // });
+
+    // $(".red-box").removeClass("red-box").addClass("blue-box");
+    
+    // --- CHANGING THE DATA OF AN ELEMENT ---
+    // var gallery = $(".gallery");
+    // var images = [
+    //   "images/laptop-mobile_small.jpg",
+    //   "images/laptop-on-table_small.jpg",
+    //   "images/people-office-group-team_small.jpg"
+    // ];
+    // gallery.data("availableImages", images);
+    // console.log(gallery.data("availableImages"));
+    // gallery.data("name", "The Awesome Data");
+    // console.log(gallery.data());
+    // gallery.removeData("name");
+    // console.log(gallery.data); // use data-dataName attr with html element for data preservation;
+
+    // --- RETRIEVING AND CHANGING THE CONTENT OF AN ELEMENT ---
+    // text(), html()
+    var firstPar = $("p:first");
+    console.log(firstPar.text());
+    console.log(firstPar.html());
+    console.log($("p").html()); // only first paragraph
+
+
+    firstPar.text("<strong>Hello</strong> World!"); // as is
+    firstPar.html("<strong>Hello</strong> World!") // parse html
 
 });
