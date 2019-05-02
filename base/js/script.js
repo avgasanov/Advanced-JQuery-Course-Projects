@@ -204,8 +204,42 @@ $(function() {
 
     // --- handling key down, key up events ---
     // keypress() - EVIL!
-    $("html").keydown(function(event) {
-      console.log(event.which); // key code
-    });
+    // $("html").keydown(function(event) {
+    //   console.log(event.which); // key code
+    // });
+
+    // Section 7. Handle form events.
+    
+    // // Focus and Blur are opposite events. Focus happens when you enter input, whereas Blur happens when you leave input
+    // var inputFields = $("input:text, input:password, textarea");
+    // inputFields.focus(function() {
+    //   $(this).css("box-shadow", "0 0 4px #666");
+    // });
+
+    // inputFields.blur(function () { 
+    //   $(this).css("box-shadow", "none");
+    // });
+    
+    // // Change events are useful for checkboxes, radiobuttons, and select elements
+    // $("#checkbox").change(function() {
+    //   var isChecked = $(this).is(":checked"); // .prop("checked");
+    //   if(isChecked) {
+    //     $(this).add("label[for='cb']").css("box-shadow", "0 0 4px #181");
+    //   } else {
+    //     $(this).add("label[for='cb']").css("box-shadow", "0 0 4px #811");
+    //   }
+    // })
+
+    // --- HANDLING SUBMIT EVENTS ---
+    $("#form").submit(function(event) {
+      var textarea = $("#message");
+      if (textarea.val().trim() === "") {
+        textarea.css("box-shadow", "0 0 4px #811");
+        event.preventDefault();
+      } else {
+        // form wil be submited
+      }
+    })
+
 
 });
