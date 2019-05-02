@@ -231,15 +231,63 @@ $(function() {
     // })
 
     // --- HANDLING SUBMIT EVENTS ---
-    $("#form").submit(function(event) {
-      var textarea = $("#message");
-      if (textarea.val().trim() === "") {
-        textarea.css("box-shadow", "0 0 4px #811");
-        event.preventDefault();
-      } else {
-        // form wil be submited
-      }
-    })
+    // $("#form").submit(function(event) {
+    //   var textarea = $("#message");
+    //   if (textarea.val().trim() === "") {
+    //     textarea.css("box-shadow", "0 0 4px #811");
+    //     event.preventDefault();
+    //   } else {
+    //     // form wil be submited
+    //   }
+    // })
 
+    // Section 8. AJAX with JQuery
+    // $.get(), $.post(), $.ajax(), $.getJSON()
+    // $.load() - load any script or html file
+    // with AJAX you first select element 
+    // $("#code").load("js/script.js") // look for file at srver
+    // $("#code").load("idontexist.php", function(response, status) {
+    //   if (status === "error") {
+    //     alert("Could not find idontexist.php");
+    //   }
+    //   console.log(response);
+    // })
+    // --- FLICKR ---
+    // $.getJSON()
+    // var flickrApiUrl = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+    // $.getJSON(flickrApiUrl, {
+    //   // options...
+    //   tags: "Khazar",
+    //   tagmode: "any",
+    //   format: "json"
+    // }).done(function(data) {
+    //   // success
+    //   console.log(data);
+    //   $.each(data.items, function(index, item) {
+    //     console.log(item);
+    //     $("<img>").attr("src", item.media.m).appendTo("#flickr");
 
+    //     if (index === 16) {
+    //       return false; // break each
+    //     }
+    //   })
+    // }).fail(function() {
+    //   // fail
+    //   alert("AJAX call failed");
+    // });
+    // --- Pokeapi ---
+    var pokeApiUrl = "https://pokeapi.co/api/v2/generation/1";
+
+    $.getJSON(pokeApiUrl).done(function(data) {
+      console.log(data);
+      $.each(data.pokemon_species, function(index, pokemon) {
+        var name  = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+        var par = $("<p>").html("Pokemon species no. " + (index + 1) + " is " + name);
+        par.appendTo("#pokemon");
+      });
+    }).fail(function() {
+      console.log("Request to Pokeapi failed.")
+    }).always(function() {
+      console.log("Print always");
+    });
 });
