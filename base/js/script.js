@@ -134,13 +134,78 @@ $(function() {
 
     // --- RETRIEVING AND CHANGING THE CONTENT OF AN ELEMENT ---
     // text(), html()
-    var firstPar = $("p:first");
-    console.log(firstPar.text());
-    console.log(firstPar.html());
-    console.log($("p").html()); // only first paragraph
+    // var firstPar = $("p:first");
+    // console.log(firstPar.text());
+    // console.log(firstPar.html());
+    // console.log($("p").html()); // only first paragraph
 
 
-    firstPar.text("<strong>Hello</strong> World!"); // as is
-    firstPar.html("<strong>Hello</strong> World!") // parse html
+    // firstPar.text("<strong>Hello</strong> World!"); // as is
+    // firstPar.html("<strong>Hello</strong> World!") // parse html
+
+    // Section 6. Events handling. Mouse events. Keyboard events.
+    // --- click handlers ---
+    // $("#btn-click").click(function(event) {
+    //   console.log(event);
+    //   alert("Button was clicked");
+    // })
+
+    // $(".red-box").click(function() {
+    //   $(this).fadeTo(500, 0.5);
+    // });
+
+    // $(".red-box").click(); // trigger click event
+    
+    // --- hover events ---
+    // :hover
+    // $("#btn-hover").hover(function() {
+    //   alert("Button was hovered!");
+    // })
+
+    // --- mouse enter, mouse leave ---
+    // var blueBox = $(".blue-box");
+    // blueBox.mouseenter(function() {
+    //   $(this).stop().fadeTo(500, 0.7);
+    // });
+    // blueBox.mouseleave(function() {
+    //   $(this).stop().fadeTo(500, 1);
+    // })
+    // // hover(handlerIn, handlerOut)
+
+    // --- adding the same handler for multiple events
+    // // .on() Ex: .on("click", function() { ... })
+    // $("html").on("click keydown", function() {
+    //   console.log("Mouse was clicked or key was pressed");
+    // }
+
+    // --- modularizing event handlers --- 
+    // function logEvent() { // could also be placed outside jquery function
+    //   console.log("Mouse was clicked");
+    // }
+    // $("html").on("click keydown", logEvent);
+
+    // --- delegated events ---
+    // $("#content").on("click", "p", function() {
+    //   $(this).slideUp();
+    // }); // the parent element that delegates events to children must always be on the page
+
+    // --- passing additional data to events ---
+    // $("#btn-click").click({
+    //   user: "Peter"
+    // }, function(event) {
+    //   greetUser(event.data);
+    // });
+
+    // function greetUser(userdata) {
+    //   username = userdata.user || "Anonymous";
+
+    //   alert("Welcome back " + username + "!");
+    // }
+
+    // --- handling key down, key up events ---
+    // keypress() - EVIL!
+    $("html").keydown(function(event) {
+      console.log(event.which); // key code
+    });
 
 });
